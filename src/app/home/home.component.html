@@ -1,0 +1,240 @@
+<section class="main_view">
+
+	<header>
+		<div class="logo"> <a href="#"> <img src="https://wiseapps.online/paris/assets/images/logo.png" width="87" height="45" alt="logo"> </a> </div>
+		<h5>WELCOME</h5>
+	</header>
+
+	<div class="container" *ngIf="!resp_code">
+	    <section class="main_content text-center"  ng-app="">
+	      <h2>Welcome to Paris Nail</h2>
+	      <p>Please enter your phone number to check-in.</p>
+	      <div class="mobile_look_key">
+	        <div class="col-sm-6 phone">
+				<div class="row1">
+		            <div class="col-md-12">
+						<div class="num-pad">
+							<div class="span4">
+								<div class="num">
+									<div class="txt" (click)="onSelect(1)"> 1 </div>
+								</div>
+							</div>
+
+							<div class="span4">
+								<div class="num">
+									<div class="txt" (click)="onSelect(2)"> 2 </div>
+								</div>
+							</div>
+
+							<div class="span4">
+								<div class="num">
+									<div class="txt" (click)="onSelect(3)"> 3 </div>
+								</div>
+							</div>
+
+							<div class="span4">
+								<div class="num">
+									<div class="txt" (click)="onSelect(4)"> 4 </div>
+								</div>
+							</div>
+
+							<div class="span4">
+								<div class="num">
+									<div class="txt" (click)="onSelect(5)"> 5 </div>
+								</div>
+							</div>
+
+							<div class="span4">
+								<div class="num">
+									<div class="txt" (click)="onSelect(6)"> 6 </div>
+								</div>
+							</div>
+
+							<div class="span4">
+								<div class="num">
+									<div class="txt" (click)="onSelect(7)"> 7 </div>
+								</div>
+							</div>
+
+							<div class="span4">
+								<div class="num">
+									<div class="txt" (click)="onSelect(8)"> 8 </div>
+								</div>
+							</div>
+
+							<div class="span4">
+								<div class="num">
+									<div class="txt" (click)="onSelect(9)"> 9 </div>
+								</div>
+							</div>
+
+							<div class="span4">
+								<div class="num">
+									<div class="txt" (click)="onSelect('*')"> * </div>
+								</div>
+							</div>
+
+							<div class="span4">
+								<div class="num">
+									<div class="txt" (click)="onSelect(0)"> 0 </div>
+								</div>
+							</div>
+
+							<div class="span4">
+								<div class="num">
+									<div class="txt" (click)="onSelect('#')"> # </div>
+								</div>
+							</div>
+						</div>
+		            </div>
+				</div>
+	        </div>
+
+	        <div class="col-sm-6">
+	          <div class="right_main_input_sec">
+		            <input type="password" id="telNumber" class="form-control tel" [(ngModel)]="phone"/>
+		           
+		            <div class="btn-group"> <a class="active" type="submit" href="#" (click)="login()"> Login</a> </div>
+	          </div>
+	        </div>
+	      </div>
+	    </section>
+	</div>
+
+	<div class="container" *ngIf="resp_code=='201' && !newUser">
+    <section class="main_content text-center">
+		<h2>Welcome to Paris Nail</h2>
+		<p>Please enter your phone number to check-in.</p>
+		<div class="mobile_look_key">
+			<div class="col-sm-6 phone">
+				<div class="row1">
+					<div class="col-md-12">
+						<div class="num-pad">
+							<div class="span4">
+								<div class="num">
+									<div class="txt" (click)="onSelect(1)"> 1 </div>
+								</div>
+							</div>
+
+							<div class="span4">
+								<div class="num">
+									<div class="txt" (click)="onSelect(2)"> 2 </div>
+								</div>
+							</div>
+
+							<div class="span4">
+								<div class="num">
+									<div class="txt" (click)="onSelect(3)"> 3 </div>
+								</div>
+							</div>
+
+							<div class="span4">
+								<div class="num">
+									<div class="txt" (click)="onSelect(4)"> 4 </div>
+								</div>
+							</div>
+
+							<div class="span4">
+								<div class="num">
+									<div class="txt" (click)="onSelect(5)"> 5 </div>
+								</div>
+							</div>
+
+							<div class="span4">
+								<div class="num">
+									<div class="txt" (click)="onSelect(6)"> 6 </div>
+								</div>
+							</div>
+
+							<div class="span4">
+								<div class="num">
+									<div class="txt" (click)="onSelect(7)"> 7 </div>
+								</div>
+							</div>
+
+							<div class="span4">
+								<div class="num">
+									<div class="txt" (click)="onSelect(8)"> 8 </div>
+								</div>
+							</div>
+
+							<div class="span4">
+								<div class="num">
+									<div class="txt" (click)="onSelect(9)"> 9 </div>
+								</div>
+							</div>
+
+							<div class="span4">
+								<div class="num">
+									<div class="txt" (click)="onSelect('*')"> * </div>
+								</div>
+							</div>
+
+							<div class="span4">
+								<div class="num">
+									<div class="txt" (click)="onSelect(0)"> 0 </div>
+								</div>
+							</div>
+
+							<div class="span4">
+								<div class="num">
+									<div class="txt" (click)="onSelect('#')"> # </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="right_main_input_sec">
+					<input type="password" id="telNumber" class="form-control tel" [(ngModel)]="phone"/>
+					<p> Our system indicated that you have entered a new number</p>
+					<h5>{{ phoneNo.response_data.phone_no }}</h5>
+					<div class="btn-group">
+						<a href="javascript:void(0);" (click)="resetPhNo()"> Re-enter</a> 
+						<a class="active" href="javascript:void(0);" (click)="ShowHide()"> Confirm</a> 
+					</div>
+				</div>
+			</div>
+      	</div>
+    </section>
+  </div>
+
+  <div class="container" *ngIf="newUser">
+	<section class="main_content text-center">
+		<h2>First time here ?</h2>
+		<p>Please let us know your name</p>
+		<form class="name_search" #signupForm="ngForm" (ngSubmit)="addNewCust(signupForm.value)">
+			<input type="hidden" [(ngModel)]="phone" name="phone_no">
+			<input type="text" placeholder="Full Name" [(ngModel)]="name" name="name">
+			<button type="submit">Confrim</button>
+		</form>
+	</section>
+  </div>
+
+  <!-- <div class="container" *ngIf="resp_code=='200'">
+    <section class="main_content text-center">
+      <h2>Hello {{phoneNo.response_data.name}}!</h2>
+      <p>Please choose one of the following</p>
+      
+      <ul class="choose">
+      	<li>
+   	    	<img src="src/assets/images/icon_1.png" alt="IOCN"> 
+            <p> Need Consultation</p>
+        </li>
+        <li>
+   	    	<a href="javascript:void(0);" routerLink="/service"><img src="src/assets/images/icon_2.png" alt="IOCN"></a>
+            <p>Choose Service </p>
+        </li>
+        <li>
+   	    	<img src="src/assets/images/icon_3.png" alt="IOCN">
+            <p>Phone Check-in</p>
+        </li>
+      
+      </ul>
+      
+    </section>
+  </div> -->
+</section>
+
+

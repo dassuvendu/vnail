@@ -1,0 +1,160 @@
+  <app-header></app-header>
+
+  <section class="manicue">
+    <div class="media">
+      <div class="container">
+        <div class="media-left">
+          <img src="images/manicue-logo.png" class="media-object" alt="manicue">
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading">Manicue</h4>
+        </div>
+      </div>
+    </div>
+    <div class="container" *ngIf="edit != true">
+      <div class="row">
+        <div class="alert alert-warning" *ngIf="resp_code!=200">{{resp_msg}}</div>
+        <div class="manicue_head" *ngIf="resp_code==200">
+          <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="customer-details">
+              <div class="row">
+                <div class="col-md-12 col-xs-12">
+                  <div class="full-border1 service-field1">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label>Package Name</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">
+                      <p>{{ package.pkg.name }}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                  <div class="full-border1 service-field1">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label>Package Services</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">
+                      <p>{{ package_service_str }}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                  <div class="full-border1 service-field1">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label>Duaration</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">
+                      <p>{{ package.pkg.duration }}min</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                  <div class="full-border1 service-field1">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label>Price</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">
+                      <p>${{ package.pkg.price }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="manicue-description-box">
+              <p>Description</p>
+              <p>{{ package.pkg.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" *ngIf="edit == true">
+      <div class="row">
+        <div class="manicue_head" *ngIf="resp_code==200">
+          <form id="edit_package_frm" #packageEditForm="ngForm" (ngSubmit)="editPackage(packageEditForm.value)">
+            <input type="hidden" [(ngModel)]="package_id" name="id">
+            <div class="col-md-6 col-sm-12 col-xs-12">
+              <div class="customer-details">
+                <div class="row">
+                  <div class="col-md-12 col-xs-12">
+                    <div class="full-border service-field">
+                      <div class="col-md-4 col-xs-5 right-border">
+                        <label>package Name</label>
+                      </div>
+                      <div class="col-md-8 col-xs-7">
+                        <input type="text" [(ngModel)]="package.pkg.name" name="name">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-xs-12">
+                    <div class="full-border service-field">
+                      <div class="col-md-4 col-xs-5 right-border">
+                        <label>Package Services</label>
+                      </div>
+                      <div class="col-md-8 col-xs-7">
+                        <!-- <select [(ngModel)]="pacg" name="services" multiple>
+                          <option *ngFor="let service of services"  *ngFor="let pck_service of package_service" [value]="service.id" [selected]="pck_service.id = service.id">
+                              {{service.name}}
+                          </option>
+                        </select> -->
+                        <ng-multiselect-dropdown
+                          [placeholder]="'custom placeholder'"
+                          [data]="services"
+                          [(ngModel)]="package.services.services"
+                          [settings]="dropdownSettings"
+                          name="services"
+                        >
+                        </ng-multiselect-dropdown>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-xs-12">
+                    <div class="full-border service-field">
+                      <div class="col-md-4 col-xs-5 right-border">
+                        <label>Duaration(min)</label>
+                      </div>
+                      <div class="col-md-8 col-xs-7">
+                        <input type="text" [(ngModel)]="package.pkg.duration" name="duration">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-xs-12">
+                    <div class="full-border service-field">
+                      <div class="col-md-4 col-xs-5 right-border">
+                        <label>Price($)</label>
+                      </div>
+                      <div class="col-md-8 col-xs-7">
+                          <input type="text" [(ngModel)]="package.pkg.price" name="price">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+              <div class="manicue-description-box">
+                <p>Description</p>
+                <textarea name="description" [(ngModel)]="package.pkg.description"></textarea>
+              </div>
+            </div>
+  
+            <div class="col-md-12 col-sm-12 col-xs-4 text-right">
+                <button type="button" class="edit-btn" (click)="edit = flase"><i class="fa fa-times"></i></button>
+              <button type="submit" class="edit-btn"><i class="fa fa-check"></i></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="down-btns" *ngIf="edit != true">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-4 text-right">
+          <button type="button" class="edit-btn" (click)="edit = true"><i class="fa fa-pencil"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>

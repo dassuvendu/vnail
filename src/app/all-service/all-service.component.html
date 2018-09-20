@@ -1,0 +1,113 @@
+  <app-header></app-header>
+  
+  <section class="main_view new-tab">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tab" role="tabpanel">
+            <ul class="nav nav-tabs full-sky-border" role="tablist">
+              <li role="presentation" class="active" [ngClass]="{'active':service_chk==1}"><a href="javascript:void(0);" aria-controls="home" role="tab" data-toggle="tab" (click)="service_chk=1"><i class="fa fa-book" aria-hidden="true"></i> &nbsp; Services</a></li>
+              <li role="presentation" [ngClass]="{'active':service_chk==2}"><a href="javascript:void(0);" aria-controls="profile" role="tab" data-toggle="tab" (click)="service_chk=2"><i class="fa fa-user" aria-hidden="true"></i> &nbsp; Packges</a></li>
+              <li role="presentation" [ngClass]="{'active':service_chk==3}"><a href="javascript:void(0);" aria-controls="messages" role="tab" data-toggle="tab" (click)="service_chk=3"><i class="fa fa-bar-chart" aria-hidden="true"></i> &nbsp; Products</a></li>
+              <!-- <li role="presentation" [ngClass]="{'active':service_chk==4}"><a href="javascript:void(0);" aria-controls="abc" role="tab" data-toggle="tab" (click)="service_chk=4"><i class="fa fa-gift" aria-hidden="true"></i> &nbsp; Gift Cards</a></li> -->
+              <button type="submit" class="btn btn-default pull-right Search-btn">Search</button>
+            </ul>
+            <div class="tab-content tabs">
+              <!-- Service -->
+              <div role="tabpanel" class="tab-pane fade in active" [ngClass]="{'in active':service_chk==1}" id="Section1">
+                <div class="c_head_panel pf-panel gray-bg">
+                  <div class="service_content" *ngFor="let service of services">
+                    <div class="service_top">
+                      <div class="col-sm-6 text-left">
+                        <p>{{service.name}}</p>
+                      </div>
+                      <div class="col-sm-6 text-right">
+                        <a href="javascript:void(0);" routerLink="/add-service">
+                          <i class="fa fa-plus" aria-hidden="true"></i>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="services">
+                      <div class="col-md-4 col-sm-6" *ngFor="let all of service.value">
+                        <a href="javascript:void(0)" routerLink="/service-detail/{{ all.id }}">
+                          <div class="service_box">
+                            <div class="col-sm-4">
+                              <div class="price_box">
+                                <h5>${{all.price}}</h5>
+                              </div>
+                            </div>
+                            <div class="col-sm-8">
+                              <h4>{{all.name}}</h4>
+                              <p>&#x25CB; &nbsp; {{all.duration}} min</p>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Package -->
+              <div role="tabpanel" class="tab-pane fade" [ngClass]="{'in active':service_chk==2}" id="Section2">
+                <div class="service_content">
+                  <div class="services">
+                    <div class="gray-bg">
+
+                      <div class="col-md-4 col-sm-6" *ngFor="let package of packages">
+                        <a href="javascript:void(0)" routerLink="/package-detail/{{ package.id }}">
+                          <div class="service_box mb-0">
+                            <div class="col-sm-4">
+                              <div class="price_box">
+                                <h5>${{package.price}}</h5>
+                              </div>
+                            </div>
+                            <div class="col-sm-8">
+                              <h4>{{package.name}}</h4>
+                              <p>&#x25CB; &nbsp; {{package.duration}} min</p>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                      <div class="service_box">
+                        <div class="col-sm-4">
+                          <div class="price_box">
+                            <h5><i class="fa fa-plus" aria-hidden="true"></i></h5>
+                          </div>
+                        </div>
+                        <div class="col-sm-8">
+                          <h4 class="mt-15">Create Package</h4>
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" class="tab-pane fade" [ngClass]="{'in active':service_chk==3}" id="Section3">Products</div>
+              <!-- <div role="tabpanel" class="tab-pane fade" [ngClass]="{'in active':service_chk==4}" id="Section4">dvsdasdsfe</div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- <footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-5 text-left phone_check">
+              <span><img src="images/phone.jpg" alt="icon"></span>
+              <span>Phone check in</span>
+              </div>
+              <div class="col-sm-7 text-right ser_btn">
+                <div class="btn-group">
+                    <a href="#"> Choose Technician</a>
+                      <a class="active" href="#"> Check-in</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </footer> -->

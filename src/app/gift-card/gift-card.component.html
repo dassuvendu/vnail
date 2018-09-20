@@ -1,0 +1,53 @@
+<app-header></app-header>
+
+<section>
+  <div class="container-fluid">
+    <div *ngIf="all_data.response_code!=200" style="margin-top: 10px;"><div class="alert alert-warning">No gift card found</div></div>
+    <div class="row" *ngIf="all_data.response_code==200">
+      <div class="col-md-2 col-sm-3 p-t-30">
+        <div class="gift-left-pannel">
+          <div class="cutstading">
+            <span>Cutstanding</span>
+            <p>245$</p>
+          </div>
+
+          <div class="cutstading" routerLink="/add-gift-card">
+            <p><i class="fa fa-plus"></i></p>
+          </div>
+         <!--  <a href="#"><img src="images/big-icons/cardform.png"></a>
+          <a href="#"><img src="images/big-icons/cardform.png"></a>
+          <a href="#"><img src="images/big-icons/cardform.png"></a> -->
+        </div>
+      </div>
+      <div class="col-md-10 col-sm-9">
+        <div class="rable-reesponsive gift-management-table">
+          
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>GC number</th>
+                <th>From</th>
+                <th>Assign to</th>
+                <th>Am ($)</th>
+                <th>Bal ($)</th>
+                <th>Expires on</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="light-sky-bg" *ngFor="let data of all_data.response_data">
+                <td>{{data.card_number}}</td>
+                <td>{{data.name}}</td>
+                <td>Angeia Baiey</td>
+                <td>{{data.amount}}</td>
+                <td>0</td>
+                <td>{{data.expier_date}}</td>
+                <td><a href="javascript.void()" routerLink="/gift-card-detail/{{data.id}}"><i class="fa fa-eye"></i></a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

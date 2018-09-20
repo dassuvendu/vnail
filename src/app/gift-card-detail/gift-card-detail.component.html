@@ -1,0 +1,31 @@
+<app-header></app-header>
+
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="giftcard-bg">
+        <div class="banner-caption">
+          <img src="https://wiseapps.online/paris/assets/images/card-logo.png">
+          <div class="gift-owner">
+            <p>Sean Nguyen</p>
+            <span>${{all_data.response_data.amount}}</span>
+          </div>
+          <div class="giftcard-no">
+            <div class="text-left card-no-row">
+            <p>Gift Card</p>
+            <span>{{all_data.response_data.card_number}}</span>
+            </div>
+            <div class="text-right">
+              <p>Expires on</p>
+              <span>{{all_data.response_data.expier_date}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mid-btns">
+        <button type="submit" class="btn redeem-btn">Redeem</button>
+        <button class="btn round-edit-btn">Edit</button>
+      </div>
+    </div>
+  </div>
+</section>

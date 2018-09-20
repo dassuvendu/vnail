@@ -1,0 +1,47 @@
+<app-header></app-header>
+
+<section class="main_view"> 
+
+  <div class="container">
+    <div class="row">
+      <div class="waiting_content">
+        <div class="waiting-list">
+          <div class="service_box" *ngFor="let emp of employee" >
+            <a href="javascript:void(0)" (click)="assignEmp(emp.id)">
+              <div class="col-sm-2 ">
+                <div class="no">
+                  <h5> <span><img src="https://wiseapps.online/paris/assets/images/clock.png" alt="iocn"></span>05</h5>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="round_name n-act">
+                  <h5> CN</h5>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="waiting-list-content">
+                <h4>{{emp.name}} <span class="pull-right"> Sean Nguyen</span></h4>
+                <p>$49:Deluxe Pedicure, Manicure, Eyebrown</p>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="price_box">
+                  <h5><span>$</span> 40</h5>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7 text-right ser_btn pull-right">
+        <div class="btn-group"> <a class="active" href="#"> Submit</a> </div>
+      </div>
+    </div>
+  </div>
+</footer>

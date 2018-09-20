@@ -1,0 +1,37 @@
+  <app-header></app-header>
+  
+  <section class="select-employee">
+    <div class="container">
+      <div class="row column_margin">
+        <div class="col-md-3 col-xs-6 text-center top-m-a">
+          <a href="javascript:void(0)" routerLink="/add-employee">
+            <!-- <img src="src/assets/images/emp/{{emp.image}}" alt="employee" class="pf-img"> -->
+            <i class="fa fa-plus add-icon"></i>
+            <h3>Add New</h3>
+          </a>
+        </div>
+        <div class="col-md-3 col-xs-6 text-center top-m-a"  *ngFor="let emp of all_emp">
+          <a href="javascript:void(0)" routerLink="/emp-detail/{{emp.id}}">
+            <img src="{{emp.image}}" alt="employee" class="pf-img">
+            <h3>{{emp.name}}</h3>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- thank you modal -->
+  <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content conent-bdr">
+      <div class="modal-header no-border">
+        <button type="button" class="close colse-btn" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+      </div>
+      <div class="modal-body text-center">
+        <img src="images/tick.png" alt="thnan_you">
+        <h2>Lorem Ipsum Dolor</h2>
+        <p>It is a long established fact that a reader will </p>
+      </div>
+    </div>
+    </div>
+  </div>

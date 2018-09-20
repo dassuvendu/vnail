@@ -1,0 +1,743 @@
+  <app-header></app-header>
+  
+  <section class="main_view new-tab">
+    <div class="side-pad">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tab" role="tabpanel">
+            <ul class="nav nav-tabs" role="tablist">
+              <li role="presentation" class="active" [ngClass]="{'active':emp_tab==1}"><a href="#Section1" aria-controls="home"  (click)="emp_tab=1" role="tab" data-toggle="tab" ><i class="fa fa-user-o" aria-hidden="true"></i> &nbsp; Profile</a></li>
+              <li role="presentation" [ngClass]="{'active':emp_tab==2}"><a href="#Section2" aria-controls="profile" role="tab" (click)="emp_tab=2" data-toggle="tab"><i class="fa fa-clock-o" aria-hidden="true"></i> &nbsp; Schedule</a></li>
+              <li role="presentation" [ngClass]="{'active':emp_tab==3}"><a href="#Section3" aria-controls="messages" role="tab" (click)="emp_tab=3" data-toggle="tab"><i class="fa fa-calendar" aria-hidden="true"></i> &nbsp; Appointments</a></li>
+              <li role="presentation" [ngClass]="{'active':emp_tab==4}"><a href="#Section4" aria-controls="abc" role="tab" (click)="emp_tab=4" data-toggle="tab"><i class="fa fa-ticket" aria-hidden="true"></i> &nbsp; Tickets</a></li>
+              <button type="submit" class="btn btn-default pull-right Search-btn">Search</button>
+            </ul>
+            <div class="tab-content tabs">
+              <div role="tabpanel" class="tab-pane fade in active" id="Section1" *ngIf="emp_tab==1">
+                <div class="c_head_panel pf-panel tech-pf-top">
+                    <div class="col-sm-8">
+                      <div class="col-md-2 col-sm-2">
+                        <div class="round_name"> 
+                          <a href="#">
+                            <img src="https://wiseapps.online/paris/assets/images/emp/employee.jpg" alt="employee" class="pf-img sm-img">
+                          </a> 
+                        </div>
+                      </div>
+                      <div class="col-md-10 col-sm-10">
+                        <div class="pf-details">
+                          <h3 class="pf-name">{{employee.name}}</h3>
+                            <p></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <button class="block-btn pull-right"><i class="fa fa-user-times" aria-hidden="true"></i> Block</button>
+                    </div>
+                </div>
+
+                <!-- General Information -->
+                <div class="tech-pf-rows">
+                  <div class="c_head_panel pf-panel gray-bg tech-pf-top" *ngIf="general_edit">
+                    <div class="service_content">
+                      <div class="service_top">
+                        <div class="col-sm-6 text-left">
+                          <p class="tech-gen-text">General information</p>
+                        </div>
+                        <div class="col-sm-6 text-right">
+                          <i class="fa fa-check" aria-hidden="true"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="container-fluid pb-50" *ngIf="general_edit">
+                    <div class="manicue_head">
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="customer-details">
+                          <div class="row">
+                            <div class="col-md-12 col-xs-12">
+                              <div class="full-border service-field">
+                                <div class="col-md-4 col-xs-5 right-border">
+                                  <label> Name</label>
+                                </div>
+                                <div class="col-md-8 col-xs-7">
+                                  <input type="text" [(ngModel)]="employee.name" name="name" class="">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-12 col-xs-12">
+                              <div class="full-border service-field">
+                                <div class="col-md-4 col-xs-5 right-border">
+                                  <label>Start Date</label>
+                                </div>
+                                <div class="col-md-8 col-xs-7">
+                                  <input type="text" [(ngModel)]="employee.join_date" name="join_date" class="">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="customer-details">
+                          <div class="row">
+                            <div class="col-md-12 col-xs-12">
+                              <div class="full-border service-field">
+                                <div class="col-md-4 col-xs-5 right-border">
+                                  <label>Phone</label>
+                                </div>
+                                <div class="col-md-8 col-xs-7">
+                                  <input type="text" [(ngModel)]="employee.phone" name="phone" class="">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-12 col-xs-12">
+                              <div class="full-border service-field">
+                                <div class="col-md-4 col-xs-5 right-border">
+                                  <label>Tech type</label>
+                                </div>
+                                <div class="col-md-8 col-xs-7">
+                                  <input type="text" name="" class="">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="customer-details">
+                          <div class="row">
+                            <div class="col-md-12 col-xs-12">
+                              <div class="full-border service-field bg-none">
+                                <div class="col-md-2 col-xs-5 right-border">
+                                  <label>Address</label>
+                                </div>
+                                <div class="col-md-10 col-xs-7">
+                                    <input type="text" [(ngModel)]="employee.address" name="address" class="">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="c_head_panel pf-panel gray-bg tech-pf-top" *ngIf="general_edit==false">
+                    <div class="service_content">
+                      <div class="service_top">
+                        <div class="col-sm-6 text-left">
+                          <p class="tech-gen-text">General information</p>
+                        </div>
+                        <div class="col-sm-6 text-right" (click)="general_edit=true">
+                          <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="container-fluid pb-50" *ngIf="general_edit==false">
+                    <div class="manicue_head">
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="customer-details">
+                          <div class="row">
+                            <div class="col-md-12 col-xs-12">
+                              <div class="full-border service-field  bg-none">
+                                <div class="col-md-4 col-xs-5 right-border">
+                                  <label> Name</label>
+                                </div>
+                                <div class="col-md-8 col-xs-7">
+                                    <p>{{employee.name}}</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-12 col-xs-12">
+                              <div class="full-border service-field  bg-none">
+                                <div class="col-md-4 col-xs-5 right-border">
+                                  <label>Start Date</label>
+                                </div>
+                                <div class="col-md-8 col-xs-7">
+                                  <p>{{employee.join_date | date: 'dd MMM, yyyy'}}</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="customer-details">
+                          <div class="row">
+                            <div class="col-md-12 col-xs-12">
+                              <div class="full-border service-field  bg-none">
+                                <div class="col-md-4 col-xs-5 right-border">
+                                  <label>Phone</label>
+                                </div>
+                                <div class="col-md-8 col-xs-7">
+                                    {{employee.phone}}
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-12 col-xs-12">
+                              <div class="full-border service-field  bg-none">
+                                <div class="col-md-4 col-xs-5 right-border">
+                                  <label>Tech type</label>
+                                </div>
+                                <div class="col-md-8 col-xs-7">
+                                  Nail
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="customer-details">
+                          <div class="row">
+                            <div class="col-md-12 col-xs-12">
+                              <div class="full-border service-field bg-none">
+                                <div class="col-md-2 col-xs-5 right-border">
+                                  <label>Address</label>
+                                </div>
+                                <div class="col-md-10 col-xs-7">
+                                    {{employee.address}}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Skill and Service -->
+                <div class="tech-pf-rows">
+                  <div class="c_head_panel pf-panel gray-bg tech-pf-top" *ngIf="skillServices">
+                  <div class="service_content">
+                    <div class="service_top">
+                      <div class="col-sm-6 text-left">
+                        <p class="tech-gen-text">Skill & Services</p>
+                      </div>
+                      <div class="col-sm-6 text-right">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                  <div class="container-fluid pb-50" *ngIf="skillServices">
+                    <div class="manicue_head">
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="customer-details">
+                          <div class="row">
+                            <div class="col-md-12 col-xs-12">
+                              <div class="full-border service-field">
+                                <div class="col-md-4 col-xs-5 right-border">
+                                  <label>Tech type</label>
+                                </div>
+                                <div class="col-md-8 col-xs-7">
+                                  <input type="text" name="" class="">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-12 col-xs-12">
+                              <div class="full-border service-field">
+                                <div class="col-md-4 col-xs-5 right-border">
+                                  <label>Ticket Time</label>
+                                </div>
+                                <div class="col-md-8 col-xs-7">
+                                  <input type="text" name="" class="">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-12 col-xs-12">
+                              <div class="full-border service-field">
+                                <div class="col-md-4 col-xs-5 right-border">
+                                  <label>Not allowed</label>
+                                </div>
+                                <div class="col-md-8 col-xs-7">
+                                  <input type="text" name="" class="">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                      <div class="customer-details">
+                        <div class="row">
+                          <div class="col-md-12 col-xs-12">
+                            <div class="full-border service-field">
+                              <div class="col-md-4 col-xs-5 right-border">
+                                <label>Level</label>
+                              </div>
+                              <div class="col-md-8 col-xs-7">
+                                <input type="text" name="" class="">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-12 col-xs-12">
+                            <div class="full-border service-field">
+                              <div class="col-md-4 col-xs-5 right-border">
+                                <label>Work time</label>
+                              </div>
+                              <div class="col-md-8 col-xs-7">
+                                <input type="text" name="" class="">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-12 col-xs-12">
+                            <div class="full-border service-field">
+                              <div class="col-md-4 col-xs-5 right-border">
+                                <label>Last Request</label>
+                              </div>
+                              <div class="col-md-8 col-xs-7">
+                                <input type="text" name="" class="">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <div class="customer-details">
+                        <div class="row">
+                          <div class="col-md-12 col-xs-12">
+                            <div class="full-border service-field">
+                              <div class="col-md-2 col-xs-5 right-border">
+                                <label>Most requsted</label>
+                              </div>
+                              <div class="col-md-10 col-xs-7">
+                                <input type="text" name="" class="">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                  <div class="c_head_panel pf-panel gray-bg tech-pf-top" *ngIf="skillServices==false">
+                    <div class="service_content">
+                      <div class="service_top">
+                        <div class="col-sm-6 text-left">
+                          <p class="tech-gen-text">Skill & Services</p>
+                        </div>
+                        <div class="col-sm-6 text-right" (click)="skillServices=true">
+                          <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="container-fluid pb-50" *ngIf="skillServices==false">
+                    <div class="manicue_head">
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                      <div class="customer-details">
+                        <div class="row">
+                          <div class="col-md-12 col-xs-12">
+                            <div class="full-border service-field bg-none">
+                              <div class="col-md-4 col-xs-5 right-border">
+                                <label>Tech type</label>
+                              </div>
+                              <div class="col-md-8 col-xs-7">
+                                
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-12 col-xs-12">
+                            <div class="full-border service-field bg-none">
+                              <div class="col-md-4 col-xs-5 right-border">
+                                <label>Ticket Time</label>
+                              </div>
+                              <div class="col-md-8 col-xs-7">
+                                
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-12 col-xs-12">
+                            <div class="full-border service-field bg-none">
+                              <div class="col-md-4 col-xs-5 right-border">
+                                <label>Not allowed</label>
+                              </div>
+                              <div class="col-md-8 col-xs-7">
+                                
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                      <div class="customer-details">
+                        <div class="row">
+                          <div class="col-md-12 col-xs-12">
+                            <div class="full-border service-field bg-none">
+                              <div class="col-md-4 col-xs-5 right-border">
+                                <label>Level</label>
+                              </div>
+                              <div class="col-md-8 col-xs-7">
+                                
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-12 col-xs-12">
+                            <div class="full-border service-field bg-none">
+                              <div class="col-md-4 col-xs-5 right-border">
+                                <label>Work time</label>
+                              </div>
+                              <div class="col-md-8 col-xs-7">
+                                
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-12 col-xs-12">
+                            <div class="full-border service-field bg-none">
+                              <div class="col-md-4 col-xs-5 right-border">
+                                <label>Last Request</label>
+                              </div>
+                              <div class="col-md-8 col-xs-7">
+                                
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <div class="customer-details">
+                        <div class="row">
+                          <div class="col-md-12 col-xs-12">
+                            <div class="full-border service-field bg-none">
+                              <div class="col-md-2 col-xs-5 right-border">
+                                <label>Most requsted</label>
+                              </div>
+                              <div class="col-md-10 col-xs-7">
+                                
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Payroll -->
+                <div class="tech-pf-rows">
+                  <div class="c_head_panel pf-panel gray-bg tech-pf-top" *ngIf="payroll_edit">
+                    <div class="service_content">
+                      <div class="service_top">
+                        <div class="col-sm-6 text-left">
+                          <p class="tech-gen-text">Payroll</p>
+                        </div>
+                        <div class="col-sm-6 text-right">
+                          <i class="fa fa-check" aria-hidden="true"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="container-fluid pb-50" *ngIf="payroll_edit">
+                    <div class="manicue_head">
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="customer-details">
+                          <div class="row">
+                            <div class="col-md-12 col-xs-12">
+                              <div class="full-border service-field">
+                                <div class="col-md-4 col-xs-5 right-border">
+                                  <label>Cash</label>
+                                </div>
+                                <div class="col-md-8 col-xs-7">
+                                  <input type="text" name="" class="">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-12 col-xs-12">
+                              <div class="full-border service-field">
+                                <div class="col-md-4 col-xs-5 right-border">
+                                  <label>Comision</label>
+                                </div>
+                                <div class="col-md-8 col-xs-7">
+                                  <input type="text" name="" class="">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="customer-details">
+                          <div class="row">
+                            <div class="col-md-12 col-xs-12">
+                              <div class="full-border service-field">
+                                <div class="col-md-4 col-xs-5 right-border">
+                                  <label>Check</label>
+                                </div>
+                                <div class="col-md-8 col-xs-7">
+                                  <input type="text" name="" class="">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="c_head_panel pf-panel gray-bg tech-pf-top" *ngIf="payroll_edit==false">
+                    <div class="service_content">
+                      <div class="service_top">
+                        <div class="col-sm-6 text-left">
+                          <p class="tech-gen-text">Payroll</p>
+                        </div>
+                        <div class="col-sm-6 text-right" (click)="payroll_edit=true">
+                          <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="container-fluid pb-50" *ngIf="payroll_edit==false">
+                    <div class="manicue_head">
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                      <div class="customer-details">
+                        <div class="row">
+                          <div class="col-md-12 col-xs-12">
+                            <div class="full-border service-field bg-none">
+                              <div class="col-md-4 col-xs-5 right-border">
+                                <label>Cash</label>
+                              </div>
+                              <div class="col-md-8 col-xs-7">
+                                
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-12 col-xs-12">
+                            <div class="full-border service-field bg-none">
+                              <div class="col-md-4 col-xs-5 right-border">
+                                <label>Comision</label>
+                              </div>
+                              <div class="col-md-8 col-xs-7">
+                                
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                      <div class="customer-details">
+                        <div class="row">
+                          <div class="col-md-12 col-xs-12">
+                            <div class="full-border service-field bg-none">
+                              <div class="col-md-4 col-xs-5 right-border">
+                                <label>Check</label>
+                              </div>
+                              <div class="col-md-8 col-xs-7">
+                                
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Security -->
+                <div class="tech-pf-rows">
+                  <div class="c_head_panel pf-panel gray-bg tech-pf-top" *ngIf="security_edit">
+                  <div class="service_content">
+                    <div class="service_top">
+                      <div class="col-sm-6 text-left">
+                        <p class="tech-gen-text">Security</p>
+                      </div>
+                      <div class="col-sm-6 text-right">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                  <div class="container-fluid pb-50" *ngIf="security_edit">
+                    <div class="manicue_head">
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="customer-details">
+                          <div class="row">
+                            <div class="col-md-12 col-xs-12">
+                              <div class="full-border service-field">
+                                <div class="col-md-4 col-xs-5 right-border">
+                                  <label>Login</label>
+                                </div>
+                                <div class="col-md-8 col-xs-7">
+                                  <input type="text" name="" class="">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-12 col-xs-12">
+                              <div class="full-border service-field">
+                                <div class="col-md-4 col-xs-5 right-border">
+                                  <label>Role</label>
+                                </div>
+                                <div class="col-md-8 col-xs-7">
+                                  <input type="text" name="" class="">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="customer-details">
+                          <div class="row">
+                            <div class="col-md-12 col-xs-12">
+                              <div class="full-border service-field">
+                                <div class="col-md-4 col-xs-5 right-border">
+                                  <label>Password</label>
+                                </div>
+                                <div class="col-md-8 col-xs-7">
+                                  <input type="text" name="" class="">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-12 col-xs-12">
+                              <div class="full-border service-field">
+                                <div class="col-md-4 col-xs-5 right-border">
+                                  <label>PIN</label>
+                                </div>
+                                <div class="col-md-8 col-xs-7">
+                                  <button class="refresh-btn pull-right"><i class="fa fa-refresh" aria-hidden="true"></i> Refresh</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="c_head_panel pf-panel gray-bg tech-pf-top"  *ngIf="security_edit==false">
+                    <div class="service_content">
+                    <div class="service_top">
+                      <div class="col-sm-6 text-left">
+                        <p class="tech-gen-text">Security</p>
+                      </div>
+                      <div class="col-sm-6 text-right" (click)="security_edit=true">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                      </div>
+                    </div>
+                    </div>
+                  </div>
+                  <div class="container-fluid pb-50" *ngIf="security_edit==false">
+                    <div class="manicue_head">
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                      <div class="customer-details">
+                        <div class="row">
+                          <div class="col-md-12 col-xs-12">
+                            <div class="full-border service-field bg-none">
+                              <div class="col-md-4 col-xs-5 right-border">
+                                <label>Login</label>
+                              </div>
+                              <div class="col-md-8 col-xs-7">
+                                
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-12 col-xs-12">
+                            <div class="full-border service-field bg-none">
+                              <div class="col-md-4 col-xs-5 right-border">
+                                <label>Role</label>
+                              </div>
+                              <div class="col-md-8 col-xs-7">
+                                
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                      <div class="customer-details">
+                        <div class="row">
+                          <div class="col-md-12 col-xs-12 bg-none">
+                            <div class="full-border service-field bg-none">
+                              <div class="col-md-4 col-xs-5 right-border">
+                                <label>Password</label>
+                              </div>
+                              <div class="col-md-8 col-xs-7">
+                                
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-12 col-xs-12">
+                            <div class="full-border service-field bg-none">
+                              <div class="col-md-4 col-xs-5 right-border">
+                                <label>PIN</label>
+                              </div>
+                              <div class="col-md-8 col-xs-7">
+                                
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Scedules -->
+              <div role="tabpanel" class="tab-pane fade in active" id="Section2" *ngIf="emp_tab==2">Tab 2</div>
+
+              <!-- Appointments -->
+              <div role="tabpanel" class="tab-pane fade in active" id="Section3" *ngIf="emp_tab==3">Tab 3</div>
+
+              <!-- Tickets -->
+              <div role="tabpanel" class="tab-pane fade in active" id="Section4" *ngIf="emp_tab==4">
+                <div class="c_head_panel tech-pf-top">
+                  <div class="col-sm-8">
+                    <div class="col-md-2 col-sm-2">
+                      <div class="round_name"> 
+                        <a href="#">
+                        <img src="https://wiseapps.online/paris/assets/images/emp/employee.jpg" alt="employee" class="pf-img sm-img">
+                        </a> 
+                      </div>
+                    </div>
+                    <div class="col-md-10 col-sm-10">
+                      <div class="pf-details">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                          <h3>{{employee.name}}</h3>
+                          <p>Tickets</p>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 text-right">
+                          <span>13.07.2018 - 14.08.2018</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="btn-group"><button type="submit" class="btn pull-right customer_search_btn ">Search</button> 
+                    </div>
+                  </div>
+                </div>
+                <div class="customer-details">
+                  <div class="container">
+                  <div class="table-responsive technician-application-list">
+                    <div class="alert alert-warning" *ngIf="tickets.response_code!=200">{{tickets.response_msg}}</div>
+                    <table class="table" *ngIf="tickets.response_code==200">
+                      <tbody>
+
+                        <tr *ngFor="let ticket of tickets.response_data">
+                          <td><i class="fa fa-ticket" aria-hidden="true"></i> &nbsp; #{{ticket.ticket}}</td>
+                          <td>{{ticket.date|date:"h:mm a"}}</td>
+                          <td>{{ticket.name}}</td>
+                          <td class="text-right">${{ticket.price}}</td>
+                          <td class="text-right"><a href="javascript:void(0);" routerLink="/emp-ticket-detail/{{ticket.id}}" title="View Detail"><i class="fa fa-eye"></i></a></td>
+                        </tr>
+                        
+                      </tbody>
+                    </table>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

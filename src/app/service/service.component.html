@@ -1,0 +1,99 @@
+<section class="main_view">
+
+	<header>
+		<div class="logo"> <a href="#"> <img src="https://wiseapps.online/paris/assets/images/logo.png" width="87" height="45" alt="logo"> </a> </div>
+		<h5>Choose Service</h5>
+	</header>
+
+	<div class="container">
+		<div class="row">
+			<div class="service_content">
+				<div class="col-sm-6 text-left">
+					<h2>Hello <span>{{ loginData.name }}</span>! Welcome back!</h2>
+					<p>Not {{ loginData.name }}? <span><a href="javascript:void(0)" (click)="logout()">Sign in</a></span> again</p>
+				</div>
+				<div class="col-sm-6 text-right">
+					<h2>Total: <span>${{service_price}}</span></h2>
+				</div>
+				<!-- <div class="services">
+					<div class="col-sm-6" *ngFor="let service of services">
+						<div class="service_box">
+							<div class="col-sm-4" (click)="selectService($event, service.id, service.price)">
+								<div class="price_box">
+									<h5>${{service.price}}</h5>
+								</div>
+							</div>
+							<div class="col-sm-8">
+								<h4>{{service.name}}</h4>
+							</div>
+						</div>
+					</div>
+				</div> -->
+
+				<div class="c_head_panel pf-panel gray-bg">
+					<div class="service_content" *ngFor="let service of services">
+					  <div class="service_top">
+						<div class="col-sm-6 text-left">
+						  <p>{{service.name}}</p>
+						</div>
+						<div class="col-sm-6 text-right">
+						  <!-- <a href="javascript:void(0);" routerLink="/add-service">
+							<i class="fa fa-plus" aria-hidden="true"></i>
+						  </a> -->
+						</div>
+					  </div>
+					  <div class="services">
+						<div class="col-md-4 col-sm-6" *ngFor="let all of service.value">
+							<div class="service_box">
+							  <div class="col-sm-4" (click)="selectService($event, all.id, all.price)">
+								<div class="price_box">
+								  <h5>${{all.price}}</h5>
+								</div>
+							  </div>
+							  <div class="col-sm-8">
+								<h4>{{all.name}}</h4>
+								<p>&#x25CB; &nbsp; {{all.duration}} min</p>
+							  </div>
+							</div>
+						</div>
+					  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade in" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true" style="padding-right: 17px;"  [ngStyle]="{'display':display}">
+		<div class="modal-dialog">
+			<div class="modal-content conent-bdr">
+				<div class="modal-header no-border">
+					<button type="button" class="close colse-btn" data-dismiss="modal" routerLink="/"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+				</div>
+				<div class="modal-body text-center">
+					<img src="https://wiseapps.online/paris/assets/images/tick.png" alt="thnan_you">
+					<h2>THANK YOU</h2>
+					<p>Appointment successfully set, Please wait a while for service</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-backdrop fade in"  [ngStyle]="{'display':display}"></div>
+
+</section>
+
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-5 text-left phone_check">
+			<span><img src="https://wiseapps.online/paris/assets/images/phone.jpg" alt="icon"></span>
+			<span>Phone check in</span>
+			</div>
+			<div class="col-sm-7 text-right ser_btn">
+				<div class="btn-group">
+					<!-- <a href="#"> Choose Technician</a> -->
+					<a class="active" href="javascript:void(0);" (click)="setAppointment(service_ids)"> Check-in</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>

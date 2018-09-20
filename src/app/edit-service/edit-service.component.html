@@ -1,0 +1,42 @@
+<app-header></app-header>
+  
+  <section class="customer-form">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-xs-12">
+          <form class="form" #serviceEditForm="ngForm" (ngSubmit)="editService(serviceEditForm.value)">
+            <div class="form_heading text-center">
+              <h1>Edit Service</h1>
+            </div>
+            <div class="col-md-12 col-xs-12">
+              <div class="alert alert-{{resp_type}}">{{resp_msg}}</div>
+              <div class="form-bg">
+                <div class="col-md-12 col-xs-12">
+                  <div class="form-group">
+                    <label for="email">Name:</label>
+                    <input type="text" class="form-control" [(ngModel)]="service.name" name="name">
+                  </div>
+                </div>
+                <input type="hidden" [(ngModel)]="service_id" name="id">
+                
+              <div class="col-md-12 col-xs-12">
+                <div class="form-group">
+                  <label for="description">Description:</label>
+                  <input type="text" class="form-control" [(ngModel)]="service.description" name="description">
+                </div>
+              </div>
+              <div class="col-md-12 col-xs-12">
+                <div class="form-group">
+                  <label for="email">Price:</label>
+                  <input type="text" class="form-control" [(ngModel)]="service.price" name="price">
+                </div>
+              </div>
+              <div class="col-md-12 col-xs-12">
+              <button class="btn btn-default pull-right form_submit_btn" type="submit">Submit</button></div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>

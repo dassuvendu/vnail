@@ -1,0 +1,154 @@
+  <app-header></app-header>
+  
+  <section class="manicue">
+    <div class="media">
+      <div class="container">
+        <div class="media-left">
+          <img src="images/manicue-logo.png" class="media-object" alt="manicue">
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading">Ticket #{{tickets.response_data.ticket}}</h4>
+        </div>
+      </div>
+    </div>
+    <div class="container" *ngIf="edit != true">
+      <div class="row">
+        <!-- <div class="alert alert-warning" *ngIf="resp_code!=200">{{resp_msg}}</div> -->
+        <div class="manicue_head">
+          <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="customer-details">
+              <div class="row">
+                <div class="col-md-12 col-xs-12">
+                  <div class="full-border1 service-field1">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label>Customer</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">
+                      <p>{{ tickets.response_data.name }}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                  <div class="full-border1 service-field1">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label>Payment</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">
+                      <p>Credit Card</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                  <div class="full-border1 service-field1">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label>Date</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">
+                      <p>{{ tickets.response_data.date | date:'MMM d, yyyy' }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="col-md-12 col-sm-12 col-xs-12" *ngFor="let service of tickets.response_data.services">
+                <div class="col-md-2">
+                  <p>${{ service.price }}</p>
+                </div>
+                <div class="col-md-4">
+                  <p>${{ service.service_name }}</p>
+                </div>
+                <div class="col-md-2">
+                    <p>{{ service.duration }}min</p>
+                  </div>
+            </div>
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <p>Total: ${{ tickets.response_data.total }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" *ngIf="edit == true">
+      <div class="row">
+        <div class="manicue_head" *ngIf="resp_code==200">
+          <form id="edit_service_frm" #serviceEditForm="ngForm" (ngSubmit)="editService(serviceEditForm.value)">
+            <input type="hidden" [(ngModel)]="service_id" name="id">
+            <div class="col-md-6 col-sm-12 col-xs-12">
+              <div class="customer-details">
+                <div class="row">
+                  <div class="col-md-12 col-xs-12">
+                    <div class="full-border service-field">
+                      <div class="col-md-4 col-xs-5 right-border">
+                        <label>Service Name</label>
+                      </div>
+                      <div class="col-md-8 col-xs-7">
+                        <input type="text" [(ngModel)]="service.name" name="name">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-xs-12">
+                    <div class="full-border service-field">
+                      <div class="col-md-4 col-xs-5 right-border">
+                        <label>Service Type</label>
+                      </div>
+                      <div class="col-md-8 col-xs-7">
+                        <select [(ngModel)]="service.cat_id" name="category">
+                          <option [value]="">Select</option>
+                          <option *ngFor="let cat of category" [value]="cat.id" [selected]="cat.id == service.cat_id">
+                              {{cat.name}}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-xs-12">
+                    <div class="full-border service-field">
+                      <div class="col-md-4 col-xs-5 right-border">
+                        <label>Duaration(min)</label>
+                      </div>
+                      <div class="col-md-8 col-xs-7">
+                        <input type="text" [(ngModel)]="service.duration" name="duration">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-xs-12">
+                    <div class="full-border service-field">
+                      <div class="col-md-4 col-xs-5 right-border">
+                        <label>Price($)</label>
+                      </div>
+                      <div class="col-md-8 col-xs-7">
+                          <input type="text" [(ngModel)]="service.price" name="price">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+              <div class="manicue-description-box">
+                <p>Description</p>
+                <textarea name="description" [(ngModel)]="service.description"></textarea>
+              </div>
+            </div>
+  
+            <div class="col-md-12 col-sm-12 col-xs-4 text-right">
+                <!-- <button type="button" class="edit-btn" (click)="edit = flase"><i class="fa fa-times"></i></button> -->
+              <button type="submit" class="edit-btn"><i class="fa fa-check"></i></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="down-btns" *ngIf="edit != true">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-4 text-right">
+          <button type="button" class="edit-btn" (click)="edit = true"><i class="fa fa-pencil"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>

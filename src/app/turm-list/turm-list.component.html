@@ -1,0 +1,84 @@
+  <app-header></app-header>
+
+  <section class="main_view">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="waiting_content">
+          <div class="waiting-list">
+            
+            <!-- <div class="service_box enable_section">
+              <div class="col-sm-2 ">
+                <div class="no sky_border">
+                  <h5> <span><img src="images/clock.png" alt="iocn"></span>05'</h5>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="round_name n-act">
+                  <h5> CN</h5>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="waiting-list-content">
+                  <h4>Anna Snow <span class="pull-right"> Sean Nguyen</span></h4>
+                  <p>$49:Deluxe Pedicure, Manicure, Eyebrown</p>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="price_box">
+                  <h5><span>$</span> 40</h5>
+                </div>
+              </div>
+            </div>
+            <div class="service_box disable_section">
+              <div class="col-sm-2 ">
+                <div class="no pink_border">
+                  <h5> <span><img src="images/clock.png" alt="iocn"></span>05'</h5>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="round_name n-act">
+                  <h5> CN</h5>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="waiting-list-content">
+                  <h4>Anna Snow <span class="pull-right"> Sean Nguyen</span></h4>
+                  <p>$49:Deluxe Pedicure, Manicure, Eyebrown</p>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="price_box">
+                  <h5><span>$</span> 40</h5>
+                </div>
+              </div>
+            </div> -->
+            
+            <div class="service_box" [ngClass]="{'enable_section':!list.status, 'disable_section':list.status}" *ngFor="let list of turn_list">
+              <div class="col-sm-2 ">
+                <div class="no" [ngClass]="{'sky_border':!list.status, 'pink_border':list.status}">
+                  <h5> <span><img src="https://wiseapps.online/paris/assets/images/clock.png" alt="iocn"></span>05</h5>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="round_name n-act">
+                  <img src="{{list.image}}" class="pf-img sm-img">
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="waiting-list-content">
+                  <h4>{{ list.name }} <span class="pull-right" *ngIf="list.ticket"> Last ticket<br>#{{ list.ticket }}</span></h4>
+                  <p *ngIf="list.status!=2">No appointment</p>
+                  <p *ngIf="list.status==2">Appointed</p>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="price_box">
+                  <h5><span>$</span> {{ list.price }}</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

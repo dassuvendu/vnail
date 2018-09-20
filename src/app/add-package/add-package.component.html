@@ -1,0 +1,84 @@
+  <app-header></app-header>
+  
+  <section class="manicue">
+    <div class="media">
+      <div class="container">
+        <div class="media-left">
+          <img src="images/manicue-logo.png" class="media-object" alt="manicue">
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading">Manicue</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="manicue_head">
+          <form class="form" #addPackageForm="ngForm" (ngSubmit)="addPackage(addPackageForm.value)">
+            <div class="col-md-6 col-sm-12 col-xs-12">
+              <div class="customer-details">
+                <div class="row">
+                  <div class="col-md-12 col-xs-12">
+                    <div class="full-border service-field">
+                      <div class="col-md-4 col-xs-5 right-border">
+                        <label>Package Name</label>
+                      </div>
+                      <div class="col-md-8 col-xs-7">
+                        <input type="text" [(ngModel)]="name" name="name">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-xs-12">
+                    <div class="full-border service-field">
+                      <div class="col-md-4 col-xs-5 right-border">
+                        <label>Select Services</label>
+                      </div>
+                      <div class="col-md-8 col-xs-7">
+                        <select [(ngModel)]="category" name="category">
+                          <option [value]="">Select</option>
+                          <option *ngFor="let cat of categories" [value]="cat.id">
+                              {{cat.name}}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-xs-12">
+                    <div class="full-border service-field">
+                      <div class="col-md-4 col-xs-5 right-border">
+                        <label>Duaration(min)</label>
+                      </div>
+                      <div class="col-md-8 col-xs-7">
+                        <input type="text" [(ngModel)]="duration" name="duration">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-xs-12">
+                    <div class="full-border service-field">
+                      <div class="col-md-4 col-xs-5 right-border">
+                        <label>Price($)</label>
+                      </div>
+                      <div class="col-md-8 col-xs-7">
+                          <input type="text" [(ngModel)]="price" name="price">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+              <div class="manicue-description-box">
+                <p>Description</p>
+                <textarea name="description" [(ngModel)]="description"></textarea>
+              </div>
+            </div>
+  
+            <div class="col-md-12 col-sm-12 col-xs-4 text-right">
+              <button class="btn btn-default pull-right form_submit_btn" type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>

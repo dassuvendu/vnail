@@ -1,0 +1,24 @@
+<section class="main_view log_background">
+  <div class="container">
+    <div class="row">
+      <div class="log-In-icon text-center"> <img src="https://wiseapps.online/paris/assets/images/def_icon.png" alt="icon"> </div>
+      <div class="log_scrn_content">
+        <h1>VNAIL<span>TICKET</span></h1>
+        <h3>WELCOME</h3>
+        <div class="log-in-from">
+          <div class="alert alert-{{ resp_status }}" *ngIf="resp_code!=''"> {{ resp_msg }}. </div>
+          
+          <form #salonOwnerSignIn="ngForm" (ngSubmit)="salonSignIn(salonOwnerSignIn.value)">
+            <div class="input-group"> <span class="input-group-addon"><i class="fa fa-mobile" aria-hidden="true"></i></span>
+              <input id="email" type="email" class="form-control" [(ngModel)]="email" name="email" placeholder="Email">
+            </div>
+            <div class="input-group"> <span class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></span>
+              <input id="password" type="password" class="form-control" [(ngModel)]="password" name="password" placeholder="Password">
+            </div>
+            <div class="btn-group"> <button class="active" type="submit">Login</button> <a class="pull-right" href="#"> Forgot the password?</a>  </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

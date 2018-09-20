@@ -1,0 +1,390 @@
+  <app-header></app-header>
+  
+  <section class="main_view new-tab">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tab" role="tabpanel">
+            <ul class="nav nav-tabs full-sky-border" role="tablist">
+              <li role="presentation" class="active" [ngClass]="{'active':cust_tab==1}"><a href="javascript:void(0);" aria-controls="home" role="tab" data-toggle="tab" (click)="cust_tab=1"><i class="fa fa-book" aria-hidden="true"></i> &nbsp; Tickets</a></li>
+
+              <li role="presentation" [ngClass]="{'active':cust_tab==2}"><a href="javascript:void(0);" aria-controls="profile" role="tab" data-toggle="tab" (click)="cust_tab=2"><i class="fa fa-user" aria-hidden="true"></i> &nbsp; Profile</a></li>
+
+              <li role="presentation" [ngClass]="{'active':cust_tab==3}"><a href="javascript:void(0);" aria-controls="messages" role="tab" data-toggle="tab" (click)="cust_tab=3"><i class="fa fa-bar-chart" aria-hidden="true"></i> &nbsp; Overview</a></li>
+            </ul>
+
+            <div class="tab-content tabs">
+              <!-- Ticket -->
+              <div role="tabpanel" class="tab-pane fade in active" [ngClass]="{'in active':cust_tab==1}" id="Section1">
+                <div class="c_head_panel pf-panel gray-bg">
+                  <div class="c_head_panel tech-pf-top">
+                    <div class="col-sm-8">
+                      <div class="col-md-2 col-sm-2">
+                        <div class="round_name"> 
+                          <a href="#">
+                          <img src="https://wiseapps.online/paris/assets/images/emp/employee.jpg" alt="employee" class="pf-img sm-img">
+                          </a> 
+                        </div>
+                      </div>
+                      <div class="col-md-10 col-sm-10">
+                        <div class="pf-details">
+                          <div class="col-lg-6 col-md-6 col-sm-6">
+                            <h3>{{detail.name}}</h3>
+                            <p>Tickets</p>
+                          </div>
+                          <div class="col-lg-6 col-md-6 col-sm-6 text-right">
+                            <span>13.07.2018 - 14.08.2018</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="btn-group"><button type="submit" class="btn pull-right customer_search_btn ">Search</button> 
+                      </div>
+                    </div>
+                  </div>
+                  <div class="customer-details">
+                    <div class="container1">
+                    <div class="table-responsive technician-application-list">
+                      <div class="alert alert-warning" *ngIf="tickets.response_code!=200">{{tickets.response_msg}}</div>
+                      <table class="table" *ngIf="tickets.response_code==200">
+                        <tbody>
+  
+                          <tr *ngFor="let ticket of tickets.response_data">
+                            <td><i class="fa fa-ticket" aria-hidden="true"></i> &nbsp; #{{ticket.ticket}}</td>
+                            <td>{{ticket.date|date:"h:mm a"}}</td>
+                            <td>{{ticket.name}}</td>
+                            <td>${{ticket.price}}</td>
+                            <td class="text-right"><a href="javascript:void(0);" routerLink="/cust-ticket-detail/{{ticket.id}}" title="View Detail"><i class="fa fa-eye"></i></a></td>
+                          </tr>
+                          
+                        </tbody>
+                      </table>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Profile -->
+              <div role="tabpanel" class="tab-pane fade" [ngClass]="{'in active':cust_tab==2}" id="Section1">
+                <div class="c_head_panel pf-panel gray-bg">
+                  <div class="c_head_panel">
+                    <div class="col-sm-8">
+                      <div class="col-md-2 col-sm-2">
+                        <div class="round_name"> 
+                          <a href="#">
+                          <img src="https://wiseapps.online/paris/assets/images/emp/employee.jpg" alt="employee" class="pf-img sm-img">
+                          </a> 
+                        </div>
+                      </div>
+                      <div class="col-md-10 col-sm-10">
+                        <div class="pf-details">
+                          <h3>{{detail.name}}</h3>
+                          <p>Profile</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-4 pull-right" *ngIf="edit_cust!=1">
+                      <div class="btn-group"><a class="edit-btn pull-right" href="javascript:void(0);" (click)="edit_cust = 1"><i class="fa fa-pencil"></i></a> </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="customer-details">
+                  <div class="row" *ngIf="edit_cust!=1">
+                    <div class="col-md-12 col-xs-12">
+                      <div class="full-border1 service-field1">
+                      <div class="col-md-4 col-xs-5 right-border">
+                        <label>Name</label>
+                      </div>
+                      <div class="col-md-8 col-xs-7">
+                        <label>{{detail.name}}</label>
+                      </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12 col-xs-12">
+                      <div class="full-border1 service-field1">
+                      <div class="col-md-4 col-xs-5 right-border">
+                        <label>Gender</label>
+                      </div>
+                      <div class="col-md-8 col-xs-7">
+                        <label>{{detail.gender}}</label>
+                      </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12 col-xs-12">
+                      <div class="full-border1 service-field1">
+                      <div class="col-md-4 col-xs-5 right-border">
+                        <label>Birthday</label>
+                      </div>
+                      <div class="col-md-8 col-xs-7">
+                        <label>{{detail.dob | date:'dd MMM, yyyy'}}</label>
+                      </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12 col-xs-12">
+                      <div class="full-border1 service-field1">
+                      <div class="col-md-4 col-xs-5 right-border">
+                        <label>Phone</label>
+                      </div>
+                      <div class="col-md-8 col-xs-7">
+                        <label>{{detail.phone_no}}</label>
+                      </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12 col-xs-12">
+                      <div class="full-border1 service-field1">
+                      <div class="col-md-4 col-xs-5 right-border">
+                        <label>Address</label>
+                      </div>
+                      <div class="col-md-8 col-xs-7">
+                        <label>{{detail.address}}</label>
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row" *ngIf="edit_cust==1">
+                    <form class="form" #custEditForm="ngForm" (ngSubmit)="editCust(custEditForm.value)">
+                      <div class="col-md-12 col-xs-12">
+                        <div class="full-border service-field">
+                        <div class="col-md-4 col-xs-5 right-border">
+                          <label>Name</label>
+                        </div>
+                        <div class="col-md-8 col-xs-7">
+                          <!-- <label>{{detail.fname}}</label> -->
+                          <input type="text" [(ngModel)]="detail.name" name="name">
+                        </div>
+                        </div>
+                      </div>
+                      <input type="hidden" [(ngModel)]="cust_id" name="id">
+                      <div class="col-md-12 col-xs-12">
+                        <div class="full-border service-field">
+                        <div class="col-md-4 col-xs-5 right-border">
+                          <label>Gender</label>
+                        </div>
+                        <div class="col-md-8 col-xs-7">
+                          <!-- <label>{{detail.gender}}</label> -->
+                          <input type="radio" [(ngModel)]="detail.gender" name="gender" value="male">Male
+                          <input type="radio" [(ngModel)]="detail.gender" name="gender" value="female">Female
+                        </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-xs-12">
+                        <div class="full-border service-field">
+                        <div class="col-md-4 col-xs-5 right-border">
+                          <label>Birthday</label>
+                        </div>
+                        <div class="col-md-8 col-xs-7">
+                          <!-- <label>{{detail.dob}}</label> -->
+                          <input type="date" [(ngModel)]="detail.dob" name="dob" value="{{ detail.dob }}">
+                        </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-xs-12">
+                        <div class="full-border service-field">
+                        <div class="col-md-4 col-xs-5 right-border">
+                          <label>Phone</label>
+                        </div>
+                        <div class="col-md-8 col-xs-7">
+                          <!-- <label>{{detail.phone_no}}</label> -->
+                          <input type="number" [(ngModel)]="detail.phone_no" name="phone_no">
+                        </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-xs-12">
+                        <div class="full-border service-field">
+                        <div class="col-md-4 col-xs-5 right-border">
+                          <label>Address</label>
+                        </div>
+                        <div class="col-md-8 col-xs-7">
+                          <!-- <label>{{detail.address}}</label> -->
+                          <input type="text" [(ngModel)]="detail.address" name="address">
+                        </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-xs-12">
+                        <button class="btn btn-default pull-right form_submit_btn" type="submit">Submit</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Overview -->
+              <div role="tabpanel" class="tab-pane fade" [ngClass]="{'in active':cust_tab==3}" id="Section1">
+                <div class="c_head_panel pf-panel gray-bg">
+                  <div class="customer-details">
+                    <div class="row">
+                      <div class="col-md-12 col-xs-12">
+                        <div class="full-border1 service-field1">
+                        <div class="col-md-4 col-xs-5 right-border">
+                          <label>Customer Since</label>
+                        </div>
+                        <div class="col-md-8 col-xs-7">
+                          <label>{{detail.join_date | date:"dd MMM, yyyy"}}</label>
+                        </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-xs-12">
+                        <div class="full-border1 service-field1">
+                        <div class="col-md-4 col-xs-5 right-border">
+                          <label>Total Visits</label>
+                        </div>
+                        <div class="col-md-8 col-xs-7">
+                          <label>{{detail.total_visits}}</label>
+                        </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-xs-12">
+                        <div class="full-border1 service-field1">
+                        <div class="col-md-4 col-xs-5 right-border">
+                          <label>Last Visit</label>
+                        </div>
+                        <div class="col-md-8 col-xs-7">
+                          <label>{{detail.last_visit | date:"dd MMM, yyyy"}}</label>
+                        </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-xs-12">
+                        <div class="full-border1 service-field1">
+                        <div class="col-md-4 col-xs-5 right-border">
+                          <label>Total Spent</label>
+                        </div>
+                        <div class="col-md-8 col-xs-7">
+                          <label>${{detail.total_spent}}</label>
+                        </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-xs-12">
+                        <div class="full-border1 service-field1">
+                        <div class="col-md-4 col-xs-5 right-border">
+                          <label>Pending Tickets</label>
+                        </div>
+                        <div class="col-md-8 col-xs-7">
+                          <label>{{detail.tickets}}</label>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- <section class="main_view">
+    <div class="container">
+      <div class="customers_details">
+        <div class="left_tab_group">
+          <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#tab_1"><img src="https://wiseapps.online/paris/assets/images/c_icon_2.png" alt="icon"></a></li>
+            <li><a data-toggle="tab" href="#tab_2"><img src="https://wiseapps.online/paris/assets/images/c_icon_1.png" alt="icon"></a></li>
+            <li><a data-toggle="tab" href="#tab_3"><img src="https://wiseapps.online/paris/assets/images/c_icon_3.png" alt="icon"></a></li>
+          </ul>
+        </div>
+        <div class="c_details_content">
+          <div class="tab-content">
+            <div id="tab_1" class="tab-pane fade in active">
+              <div class="c_head_panel">
+                <div class="col-sm-8">
+                  <div class="col-md-2 col-sm-2">
+                    <div class="round_name"> 
+                      <a href="#">
+                      <img src="https://wiseapps.online/paris/assets/images/emp/employee.jpg" alt="employee" class="pf-img sm-img">
+                      </a> 
+                    </div>
+                  </div>
+                  <div class="col-md-10 col-sm-10">
+                    <div class="pf-details">
+                      <h3>{{detail.name}}</h3>
+                      <p>Profile</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4 pull-right">
+                  <div class="btn-group"><a class="edit-btn pull-right" href="javascript:void(0);" routerLink="/edit-customer/{{detail.id}}">Edit</a> </div>
+                </div>
+              </div>
+              <div class="customer-details">
+                <div class="row">
+                  <div class="col-md-12 col-xs-12">
+                    <div class="full-border">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label>First Name</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">
+                      <label>{{detail.fname}}</label>
+                    </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-xs-12">
+                    <div class="full-border">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label>Last Name</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">
+                      <label>{{detail.lname}}</label>
+                    </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-xs-12">
+                    <div class="full-border">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label>Gender</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">
+                      <label>{{detail.gender}}</label>
+                    </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-xs-12">
+                    <div class="full-border">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label>Birthday</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">
+                      <label>{{detail.dob}}</label>
+                    </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-xs-12">
+                    <div class="full-border">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label>Phone</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">
+                      <label>{{detail.phone_no}}</label>
+                    </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-xs-12">
+                    <div class="full-border">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label>Address</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">
+                      <label>{{detail.address}}</label>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="tab_2" class="tab-pane fade">
+            </div>
+            
+            <div id="tab_3" class="tab-pane fade">
+              <h3>Menu 2</h3>
+              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->

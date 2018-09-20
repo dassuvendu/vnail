@@ -1,0 +1,84 @@
+<app-header></app-header>
+
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="manicue_head">
+        <div class="alert alert-{{ resp_type }}">{{ resp_msg }}</div>
+        <form id="edit_package_frm" #addGiftCardForm="ngForm" (ngSubmit)="addGiftCard(addGiftCardForm.value)">
+          <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="customer-details">
+              <div class="row">
+                <div class="col-md-12 col-xs-12">
+                  <div class="full-border service-field">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label>Customer</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">
+                      <ng-multiselect-dropdown
+                      [placeholder]="'Select Customer'"
+                      [data]="customers"
+                      [(ngModel)]="from"
+                      [settings]="dropdownSettings"
+                      name="from"
+                      >
+                      </ng-multiselect-dropdown>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                  <div class="full-border service-field">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label>Assign Customer</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">
+                      <ng-multiselect-dropdown
+                      [placeholder]="'Select Customer'"
+                      [data]="customers"
+                      [(ngModel)]="assign_to"
+                      [settings]="dropdownSettings"
+                      name="assign_to"
+                      >
+                      </ng-multiselect-dropdown>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                  <div class="full-border service-field">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label>Amount</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">
+                      <input type="text" [(ngModel)]="amount" name="amount">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                  <div class="full-border service-field">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label>Expiry Date</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">
+                        <input type="date" [(ngModel)]="expier_date" name="expier_date">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="manicue-description-box">
+              <p>Terms and Condition</p>
+              <textarea name="tc" [(ngModel)]="tc"></textarea>
+            </div>
+          </div> -->
+
+          <div class="col-md-12 col-sm-12 col-xs-4 text-right">
+            <!-- <button type="button" class="edit-btn" (click)="edit = flase"><i class="fa fa-times"></i></button> -->
+            <button type="submit" class="edit-btn"><i class="fa fa-check"></i></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
