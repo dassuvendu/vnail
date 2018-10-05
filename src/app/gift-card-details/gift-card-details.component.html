@@ -1,0 +1,284 @@
+<app-header></app-header>
+
+<section class="">
+  <div class="row" *ngIf="resp_code!=200">
+    <div class="col-md-12"><div class="alert alert-warning">{{ resp_msg }}</div></div>
+  </div>
+
+  <div class="row">
+    <div class="g-card-header">
+      <div class="col-md-6 col-sm-8 col-xs-12">
+        <div class="media">
+          <div class="media-left">
+            <img src="images/gc-logo.png" class="media-object" alt="manicue">
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading mt-8">Gift Card &nbsp; &nbsp; <span> &nbsp; &nbsp;No {{ cardDetail.card_info.card_number }}</span></h4>
+            <p>OUTSTANDING - Gift Card</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-4 col-xs-12">
+        <!-- <div class="text-right">
+          <a href="#" class="btn sellasnew-btn">Sell As New</a>
+        </div> -->
+      </div>
+    </div>
+    <div class="tech-pf-rows">
+      <div class="c_head_panel pf-panel gray-bg tech-pf-top">
+        <div class="service_content">
+          <div class="service_top">
+            <div class="col-sm-6 text-left">
+              <p class="tech-gen-text black-text">Purchaser information</p>
+            </div>
+            <!-- <div class="col-sm-6 text-right">
+              <i class="fa fa-check" aria-hidden="true"></i>
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid pb-50">
+        <div class="manicue_head">
+          <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="customer-details">
+              <div class="row">
+                <div class="col-md-12 col-xs-12">
+                  <div class="full-border service-field bg-none">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label>Name</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">
+                        {{ cardDetail.card_info.buyer_name }}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                  <div class="full-border service-field bg-none">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label>Address</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">
+                      {{ cardDetail.card_info.buyer_address }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="customer-details">
+              <div class="row">
+                <div class="col-md-12 col-xs-12">
+                  <div class="full-border service-field bg-none">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label>Phone</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">
+                      {{ cardDetail.card_info.buyer_phone_no }}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                  <div class="full-border service-field bg-none">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label>Gender</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">
+                      {{ cardDetail.card_info.buyer_gender }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="c_head_panel pf-panel gray-bg tech-pf-top">
+        <div class="service_content">
+          <div class="service_top">
+            <div class="col-sm-6 text-left">
+              <p class="tech-gen-text black-text">Receiver information</p>
+            </div>
+            <div class="col-sm-6 text-right">
+              <!-- <i class="fa fa-check" aria-hidden="true"></i> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid pb-50">
+        <div class="manicue_head">
+          <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="customer-details">
+              <div class="row">
+                <div class="col-md-12 col-xs-12">
+                  <div class="full-border service-field bg-none">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label>Name</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">
+                      {{ cardDetail.card_info.rcvr_name }}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                  <div class="full-border service-field  bg-none">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label>Address</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">
+                      {{ cardDetail.card_info.rcvr_address }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="customer-details">
+              <div class="row">
+                <div class="col-md-12 col-xs-12">
+                  <div class="full-border service-field  bg-none">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label>Phone</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">
+                      {{ cardDetail.card_info.rcvr_phone_no }}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                  <div class="full-border service-field  bg-none">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label>Gender</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">
+                      {{ cardDetail.card_info.rcvr_gendar }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="c_head_panel pf-panel gray-bg tech-pf-top">
+        <div class="service_content">
+          <div class="service_top">
+            <div class="col-sm-6 text-left">
+              <p class="tech-gen-text black-text">Gift Card information</p>
+            </div>
+            <div class="col-sm-6 text-right">
+              <!-- <i class="fa fa-check" aria-hidden="true"></i> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid pb-50">
+        <div class="manicue_head">
+          <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="customer-details">
+              <div class="row">
+                <div class="col-md-12 col-xs-12">
+                  <div class="full-border service-field bg-none">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label>Card Number</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">
+                      {{ cardDetail.card_info.card_number }}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                  <div class="full-border service-field  bg-none">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label>Valid From</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">
+                        {{ cardDetail.card_info.date|date:"dd MMM, yyyy" }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="customer-details">
+              <div class="row">
+                <div class="col-md-12 col-xs-12">
+                  <div class="full-border service-field  bg-none">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label>Amount</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">
+                      {{ cardDetail.card_info.amount }}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                  <div class="full-border service-field  bg-none">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label>Expiare Date</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">None</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="c_head_panel pf-panel gray-bg tech-pf-top">
+        <div class="service_content">
+          <div class="service_top">
+            <div class="col-sm-6 text-left">
+              <p class="tech-gen-text black-text">Note</p>
+            </div>
+            <div class="col-sm-6 text-right">
+              <i class="fa fa-check" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <!-- <div class="container-fluid pb-50">
+        <div class="manicue_head">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="customer-details">
+              <div class="row">
+                <div class="col-md-12 col-xs-12">
+                  <div class="full-border service-field bg-none">
+                    <div class="col-md-12 col-xs-12">
+                      <textarea class="form-control full-text-area" rows="5" id="comment" placeholder="Enter your note here"></textarea>
+                    </div>
+                    <div class="col-md-8 col-xs-7"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      
+      <div class="c_head_panel pf-panel gray-bg tech-pf-top">
+        <div class="service_content">
+          <div class="service_top">
+            <div class="col-sm-6 text-left">
+              <p class="tech-gen-text black-text">Opeartions information</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="opeartions-detalis" *ngFor="let reedem of cardDetail.card_reedem">
+        <div class="col-md-10 col-sm-9 col-xs-10">
+          <!-- <span>Redeem ${{ reedem.reedemed_amount }} OUT OF 60$ by Sean Nguyen on</span> -->
+          <span>Redeem ${{ reedem.reedemed_amount }} on</span>
+          <label>Ticket {{ reedem.ticket }}</label>
+        </div>
+        <div class="col-md-2 col-sm-3 col-xs-2">
+          <p class="text-right">{{ reedem.date|date:"dd MMM, yyyy" }}</p>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>

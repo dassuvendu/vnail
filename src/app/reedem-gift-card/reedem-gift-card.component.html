@@ -1,0 +1,97 @@
+<app-header></app-header>
+
+<section class="main_content text-center">
+  <!-- <h2>Welcome to Paris Nail</h2>
+  <p>Please enter your phone number to check-in.</p> -->
+  <div class="mobile_look_key">
+    <div class="col-sm-6 phone">
+      <div class="row1">
+        <div class="col-md-12">
+          <div class="num-pad">
+            <div class="span4">
+              <div class="num">
+                <div class="txt" (click)="onSelect(1)"> 1 </div>
+              </div>
+            </div>
+
+            <div class="span4">
+              <div class="num">
+                <div class="txt" (click)="onSelect(2)"> 2 </div>
+              </div>
+            </div>
+
+            <div class="span4">
+              <div class="num">
+                <div class="txt" (click)="onSelect(3)"> 3 </div>
+              </div>
+            </div>
+
+            <div class="span4">
+              <div class="num">
+                <div class="txt" (click)="onSelect(4)"> 4 </div>
+              </div>
+            </div>
+
+            <div class="span4">
+              <div class="num">
+                <div class="txt" (click)="onSelect(5)"> 5 </div>
+              </div>
+            </div>
+
+            <div class="span4">
+              <div class="num">
+                <div class="txt" (click)="onSelect(6)"> 6 </div>
+              </div>
+            </div>
+
+            <div class="span4">
+              <div class="num">
+                <div class="txt" (click)="onSelect(7)"> 7 </div>
+              </div>
+            </div>
+
+            <div class="span4">
+              <div class="num">
+                <div class="txt" (click)="onSelect(8)"> 8 </div>
+              </div>
+            </div>
+
+            <div class="span4">
+              <div class="num">
+                <div class="txt" (click)="onSelect(9)"> 9 </div>
+              </div>
+            </div>
+
+            <div class="span4">
+              <div class="num">
+                <div class="txt" (click)="onSelect('*')"> * </div>
+              </div>
+            </div>
+
+            <div class="span4">
+              <div class="num">
+                <div class="txt" (click)="onSelect(0)"> 0 </div>
+              </div>
+            </div>
+
+            <div class="span4">
+              <div class="num">
+                <div class="txt" (click)="onSelect('#')"> # </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="right_main_input_sec">
+        <input type="password" id="telNumber" class="form-control tel" [(ngModel)]="cardNumber"/>
+        <p> Please Enter Customar Gift Card Number</p>
+        <!-- <h5>{{ phoneNo.response_data.phone_no }}</h5> -->
+        <div class="btn-group">
+          <a class="active" href="javascript:void(0);" (click)="redeemGiftCard()"> Confirm</a> 
+        </div>
+      </div>
+    </div>
+      </div>
+  </section>

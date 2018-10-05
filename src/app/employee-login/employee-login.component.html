@@ -1,0 +1,121 @@
+<section class="main_view">
+
+    <header>
+      <div class="logo"> <a href="#"> <img src="https://wiseapps.online/paris/assets/images/logo.png" width="87" height="45" alt="logo"> </a> </div>
+      <h5>LOGIN</h5>
+    </header>
+  
+    <div class="container" *ngIf="!resp_code">
+        <section class="main_content text-center"  ng-app="">
+          <h2>Welcome to Paris Nail</h2>
+          <p>Please enter your phone number to login.</p>
+          <div class="mobile_look_key">
+            <div class="col-sm-6 col-xs-12 phone xs_position_bottom" [ngClass]="{'bottom-key':success==1}">
+              <div class="row1">
+                <div class="col-md-12">
+                <div class="num-pad">
+                <div class="span4">
+                  <div class="num">
+                    <div class="txt" (click)="onSelect(1)"> 1 </div>
+                  </div>
+                </div>
+  
+                <div class="span4">
+                  <div class="num">
+                    <div class="txt" (click)="onSelect(2)"> 2 </div>
+                  </div>
+                </div>
+  
+                <div class="span4">
+                  <div class="num">
+                    <div class="txt" (click)="onSelect(3)"> 3 </div>
+                  </div>
+                </div>
+  
+                <div class="span4">
+                  <div class="num">
+                    <div class="txt" (click)="onSelect(4)"> 4 </div>
+                  </div>
+                </div>
+  
+                <div class="span4">
+                  <div class="num">
+                    <div class="txt" (click)="onSelect(5)"> 5 </div>
+                  </div>
+                </div>
+  
+                <div class="span4">
+                  <div class="num">
+                    <div class="txt" (click)="onSelect(6)"> 6 </div>
+                  </div>
+                </div>
+  
+                <div class="span4">
+                  <div class="num">
+                    <div class="txt" (click)="onSelect(7)"> 7 </div>
+                  </div>
+                </div>
+  
+                <div class="span4">
+                  <div class="num">
+                    <div class="txt" (click)="onSelect(8)"> 8 </div>
+                  </div>
+                </div>
+  
+                <div class="span4">
+                  <div class="num">
+                    <div class="txt" (click)="onSelect(9)"> 9 </div>
+                  </div>
+                </div>
+  
+                <div class="span4">
+                  <div class="num">
+                    <div class="txt" (click)="onSelect('*')"> * </div>
+                  </div>
+                </div>
+  
+                <div class="span4">
+                  <div class="num">
+                    <div class="txt" (click)="onSelect(0)"> 0 </div>
+                  </div>
+                </div>
+  
+                <div class="span4">
+                  <div class="num">
+                    <div class="txt" (click)="onSelect('#')"> # </div>
+                  </div>
+                </div>
+              </div>
+                  </div>
+          </div>
+            </div>
+  
+            <div class="col-sm-6 col-xs-12 xs_position_top" *ngIf="success==0">
+              <div class="right_main_input_sec">
+                <div class="alert alert-warning" *ngIf="resp_code==201">{{resp_msg}}</div>
+                <input type="text" id="telNumber" class="form-control tel" [(ngModel)]="phone"/>
+                
+                <div class="btn-group"> <button class="active" (click)="login()"> Login</button></div>
+              </div>
+            </div>
+
+            <div class="col-sm-6 col-xs-12 xs_position_top" *ngIf="success==1">
+              <div _ngcontent-c5="" class="round_name n-act p_15">
+                <img _ngcontent-c5="" class="pf-img sm-img" src="{{resp.image}}">
+                <p class="m_15">{{resp.name}}</p>
+              </div>
+              <div class="right_main_input_sec">
+                <div class="alert alert-warning" *ngIf="resp_code==201">{{resp_msg}}</div>
+                <p>Enter your pin</p>
+                <input type="text" id="telNumber" class="form-control tel" [(ngModel)]="phone"/>
+                
+                <div class="btn-group"> <button class="active" (click)="pinCheck()"> Submit</button></div>
+              </div>
+            </div>
+          </div>
+        </section>
+    </div>
+  </section>
+  
+  
+  

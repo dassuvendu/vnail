@@ -1,0 +1,54 @@
+<app-emp-header></app-emp-header>
+
+<section>
+  <div class="row no_margin">
+    <div class="window_height">
+      <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 sidebar">
+        <div>
+          <div class="show_calender">
+            <!-- <div class="cal_main sticky" id="" routerLink="/calendar"> -->
+            <div class="cal_main sticky" id="">
+              <div class="cal_head">
+                <div class="col-md-6 month_text">{{date | date:'MMM'}}</div>
+                <div class="col-md-6 year_text">{{date | date:'yyyy'}}</div>
+              </div>
+              <div class="date_text">{{date | date:'d'}}</div>
+            </div>
+
+            <div class="time_sec">
+              <ul>
+                <!-- <li class="arrow_box_pink">10.00</li>
+                <li class="arrow_box_pink">11.15</li>
+                <li class="arrow_box">12.00</li> -->
+                <li *ngFor="let time of times" [ngClass]="{'arrow_box':time.min==00}">{{time.time}}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9 emp_sec">
+        <div *ngIf="resp_code!=200" class="alert alert-warning">{{resp_msg}}</div>
+        <div *ngIf="resp_code==200">
+          <div class="event_list" *ngFor="let appointment of appointment_data">
+            <div class="col-lg-2 col-md-2 col-sm-2 text-center p-1">
+              <div class="appo_round_img pink_border_top sticky">
+                <img src="{{appointment.image}}" class="pf-img sm-img">
+                <p>{{appointment.emp_name}}</p>
+              </div>
+              <div class="evnt_sec">
+                <ul>
+                  <li *ngFor="let appoint of times" >
+                    <!-- {{appoint.appointment.name}} -->
+                    <div *ngFor="let event of appointment.services">
+                      <div *ngIf="event.start_time==appoint.time" [ngStyle]="{'height':event.height}" [ngClass]="event.color">{{event.service_name}}</div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

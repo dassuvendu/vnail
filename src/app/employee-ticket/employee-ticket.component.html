@@ -1,0 +1,24 @@
+<app-emp-header></app-emp-header>
+
+<section>
+  <div class="customer-details">
+    <div class="container">
+    <div class="table-responsive technician-application-list">
+      <div class="alert alert-warning" *ngIf="tickets.response_code!=200">{{tickets.response_msg}}</div>
+      <table class="table" *ngIf="tickets.response_code==200">
+        <tbody>
+
+          <tr *ngFor="let ticket of tickets.response_data">
+            <td><i class="fa fa-ticket" aria-hidden="true"></i> &nbsp; #{{ticket.ticket}}</td>
+            <td>{{ticket.date|date:"h:mm a"}}</td>
+            <td>{{ticket.name}}</td>
+            <td class="text-right">${{ticket.price}}</td>
+            <td class="text-right"><a href="javascript:void(0);" routerLink="/ticket-detail/{{ticket.id}}" title="View Detail"><i class="fa fa-eye"></i></a></td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    </div>
+  </div>
+</section>

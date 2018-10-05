@@ -1,0 +1,415 @@
+<app-emp-header></app-emp-header>
+
+<section>
+  <!-- General Information -->
+  <div class="tech-pf-rows">
+    <form id="general_info_form" #empGeneralEditForm="ngForm" (ngSubmit)="empGeneralEdit(empGeneralEditForm.value)">
+      <input type="hidden" [(ngModel)]="employee.id" name="id">
+      <div class="c_head_panel pf-panel gray-bg tech-pf-top" *ngIf="general_edit">
+        <div class="service_content">
+          <div class="service_top">
+            <div class="col-sm-6 text-left">
+              <p class="tech-gen-text">General information</p>
+            </div>
+            <div class="col-sm-6 text-right">
+              <button type="submit"><i class="fa fa-check" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid pb-50" *ngIf="general_edit">
+        <div class="manicue_head">
+          <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="customer-details">
+              <div class="row">
+                <div class="col-md-12 col-xs-12">
+                  <div class="full-border service-field">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label> Name</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">
+                      <input type="text" [(ngModel)]="employee.name" name="name" class="">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                  <div class="full-border service-field">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label>Start Date</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">
+                      <input type="text" [(ngModel)]="employee.join_date" name="join_date" class="">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="customer-details">
+              <div class="row">
+                <div class="col-md-12 col-xs-12">
+                  <div class="full-border service-field">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label>Phone</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">
+                      <input type="text" [(ngModel)]="employee.phone" name="phone" class="">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                  <div class="full-border service-field">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label>Tech type</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">
+                      <input type="text" [(ngModel)]="employee.tech_type" name="tech_type" class="">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="customer-details">
+              <div class="row">
+                <div class="col-md-12 col-xs-12">
+                  <div class="full-border service-field">
+                    <div class="col-md-2 col-xs-5 right-border">
+                      <label>Address</label>
+                    </div>
+                    <div class="col-md-10 col-xs-7">
+                        <input type="text" [(ngModel)]="employee.address" name="address" class="">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="c_head_panel pf-panel gray-bg tech-pf-top" *ngIf="general_edit==false">
+      <div class="service_content">
+        <div class="service_top">
+          <div class="col-sm-6 text-left">
+            <p class="tech-gen-text">General information</p>
+          </div>
+          <div class="col-sm-6 text-right" (click)="general_edit=true">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid pb-50" *ngIf="general_edit==false">
+      <div class="manicue_head">
+        <div class="col-md-6 col-sm-12 col-xs-12">
+          <div class="customer-details">
+            <div class="row">
+              <div class="col-md-12 col-xs-12">
+                <div class="full-border service-field  bg-none">
+                  <div class="col-md-4 col-xs-5 right-border">
+                    <label> Name</label>
+                  </div>
+                  <div class="col-md-8 col-xs-7">
+                      <p>{{employee.name}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 col-xs-12">
+                <div class="full-border service-field  bg-none">
+                  <div class="col-md-4 col-xs-5 right-border">
+                    <label>Start Date</label>
+                  </div>
+                  <div class="col-md-8 col-xs-7">
+                    <p>{{employee.join_date | date: 'dd MMM, yyyy'}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-12 col-xs-12">
+          <div class="customer-details">
+            <div class="row">
+              <div class="col-md-12 col-xs-12">
+                <div class="full-border service-field  bg-none">
+                  <div class="col-md-4 col-xs-5 right-border">
+                    <label>Phone</label>
+                  </div>
+                  <div class="col-md-8 col-xs-7">
+                      {{employee.phone}}
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 col-xs-12">
+                <div class="full-border service-field  bg-none">
+                  <div class="col-md-4 col-xs-5 right-border">
+                    <label>Tech type</label>
+                  </div>
+                  <div class="col-md-8 col-xs-7">
+                    {{employee.tech_type}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="customer-details">
+            <div class="row">
+              <div class="col-md-12 col-xs-12">
+                <div class="full-border service-field bg-none">
+                  <div class="col-md-2 col-xs-5 right-border">
+                    <label>Address</label>
+                  </div>
+                  <div class="col-md-10 col-xs-7">
+                      {{employee.address}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Skill and Service -->
+  <div class="tech-pf-rows">
+    <form #empServiceEditForm="ngForm" (ngSubmit)="empServiceEdit(empServiceEditForm.value)">
+      <div class="c_head_panel pf-panel gray-bg tech-pf-top" *ngIf="skillServices">
+      <div class="service_content">
+        <div class="service_top">
+          <div class="col-sm-6 text-left">
+            <p class="tech-gen-text">Skill & Services</p>
+          </div>
+          <div class="col-sm-6 text-right">
+              <button type="submit"><i class="fa fa-check" aria-hidden="true"></i></button>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="container-fluid pb-50" *ngIf="skillServices">
+        <div class="manicue_head">
+          <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="customer-details">
+              <div class="row">
+                <div class="col-md-12 col-xs-12">
+                  <div class="full-border service-field">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label>Not allowed</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">
+                      <input type="text" [(ngModel)]="employee.not_allowed" name="not_allowed" class="">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <div class="col-md-6 col-sm-12 col-xs-12">
+          <div class="customer-details">
+            <div class="row">
+              <div class="col-md-12 col-xs-12">
+                <div class="full-border service-field">
+                  <div class="col-md-4 col-xs-5 right-border">
+                    <label>Least Request</label>
+                  </div>
+                  <div class="col-md-8 col-xs-7">
+                    <input type="text" [(ngModel)]="employee.least_req" name="least_req" class="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="customer-details">
+            <div class="row">
+              <div class="col-md-12 col-xs-12">
+                <div class="full-border service-field">
+                  <div class="col-md-2 col-xs-5 right-border">
+                    <label>Most requsted</label>
+                  </div>
+                  <div class="col-md-10 col-xs-7">
+                    <input type="text" [(ngModel)]="employee.most_req" name="most_req" class="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </form>
+    <div class="c_head_panel pf-panel gray-bg tech-pf-top" *ngIf="skillServices==false">
+      <div class="service_content">
+        <div class="service_top">
+          <div class="col-sm-6 text-left">
+            <p class="tech-gen-text">Skill & Services</p>
+          </div>
+          <div class="col-sm-6 text-right" (click)="skillServices=true">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid pb-50" *ngIf="skillServices==false">
+      <div class="manicue_head">
+      <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="customer-details">
+          <div class="row">
+            <div class="col-md-12 col-xs-12">
+              <div class="full-border service-field bg-none">
+                <div class="col-md-4 col-xs-5 right-border">
+                  <label>Not allowed</label>
+                </div>
+                <div class="col-md-8 col-xs-7">
+                  {{ employee.not_allowed }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="customer-details">
+          <div class="row">
+            <div class="col-md-12 col-xs-12">
+              <div class="full-border service-field bg-none">
+                <div class="col-md-4 col-xs-5 right-border">
+                  <label>Least Request</label>
+                </div>
+                <div class="col-md-8 col-xs-7">
+                  {{ employee.least_req }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="customer-details">
+          <div class="row">
+            <div class="col-md-12 col-xs-12">
+              <div class="full-border service-field bg-none">
+                <div class="col-md-2 col-xs-5 right-border">
+                  <label>Most requsted</label>
+                </div>
+                <div class="col-md-10 col-xs-7">
+                  {{ employee.most_req }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Security -->
+  <div class="tech-pf-rows">
+    <form #empSecurityEditForm="ngForm" (ngSubmit)="empSecurityEdit(empSecurityEditForm.value)">
+      <div class="c_head_panel pf-panel gray-bg tech-pf-top" *ngIf="security_edit">
+        <div class="service_content">
+          <div class="service_top">
+            <div class="col-sm-6 text-left">
+              <p class="tech-gen-text">Security</p>
+            </div>
+            <div class="col-sm-6 text-right">
+                <button type="submit"><i class="fa fa-check" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid pb-50" *ngIf="security_edit">
+        <div class="manicue_head">
+          <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="customer-details">
+              <div class="row">
+                <div class="col-md-12 col-xs-12">
+                  <div class="full-border service-field">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label>Login</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">
+                      <input type="text" [(ngModel)]="employee.phone" name="phone" class="">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="customer-details">
+              <div class="row">
+                <div class="col-md-12 col-xs-12">
+                  <div class="full-border service-field">
+                    <div class="col-md-4 col-xs-5 right-border">
+                      <label>PIN</label>
+                    </div>
+                    <div class="col-md-8 col-xs-7">
+                      <input type="text" [(ngModel)]="employee.pin" name="pin" class="">
+                      <!-- <button class="refresh-btn pull-right"><i class="fa fa-refresh" aria-hidden="true"></i> Refresh</button> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="c_head_panel pf-panel gray-bg tech-pf-top"  *ngIf="security_edit==false">
+      <div class="service_content">
+      <div class="service_top">
+        <div class="col-sm-6 text-left">
+          <p class="tech-gen-text">Security</p>
+        </div>
+        <div class="col-sm-6 text-right" (click)="security_edit=true">
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="container-fluid pb-50" *ngIf="security_edit==false">
+      <div class="manicue_head">
+      <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="customer-details">
+          <div class="row">
+            <div class="col-md-12 col-xs-12">
+              <div class="full-border service-field bg-none">
+                <div class="col-md-4 col-xs-5 right-border">
+                  <label>Login</label>
+                </div>
+                <div class="col-md-8 col-xs-7">
+                  {{employee.phone}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="customer-details">
+          <div class="row">
+            <div class="col-md-12 col-xs-12">
+              <div class="full-border service-field bg-none">
+                <div class="col-md-4 col-xs-5 right-border">
+                  <label>PIN</label>
+                </div>
+                <div class="col-md-8 col-xs-7">
+                  {{employee.pin}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>

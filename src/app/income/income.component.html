@@ -1,0 +1,77 @@
+  <app-header></app-header>
+
+  <section>
+    <div class="container-fluid">
+      <div class="top-head-bg">
+        <div class="row">
+          <div class="col-md-12 col-xs-12">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <input type="date" name="date" class="form-control custom-fr-ctrl" (change)="dateChange($event, time)">
+              <span class="caret"></span>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <input type="time" name="time" class="form-control custom-fr-ctrl" (change)="timeChange($event, time)">
+              <span class="caret"></span>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12 text-right">
+              <label class="radious-label">
+                <img src="images/c_icon_1.png" alt="ticket">
+                <span>1400</span>
+              </label>
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-12">
+              <!-- <input type="date" name="" class="form-control custom-fr-ctrl">
+              <span class="caret"></span> -->
+              <ng-multiselect-dropdown
+                [placeholder]="'Select Employee'"
+                [data]="allEmp"
+                [settings]="dropdownSettings"
+                (onSelect)="onEmpSelect($event)"
+                (onDeSelect)="onEmpDeSelect($event)"
+                name="emp"
+              >
+              </ng-multiselect-dropdown>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12 text-right">
+              <label class="radious-label">
+                <span>${{ allApp.total_price }}</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 p-r-1" *ngIf="resp_code!=200">
+          <div class="alert alert-warning">{{ resp_msg }}</div>
+        </div>
+
+        <div class="col-md-6 col-sm-6 p-r-1" *ngFor="let val of allApp.val">
+          <div class="income_row">
+            <div class="col-md-2 col-sm-2">
+              <div class="sky-round-name">
+                <h5>C.N</h5>
+              </div>
+            </div>
+            <div class="col-md-7 col-sm-7">
+              <div class="income-details">
+                <h4>{{ val.name }}</h4>
+                <p class="text-sky">${{ val.price }}</p>
+                <span>{{ val.date|date:'dd MMM, yyyy' }}</span>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-3 text-right">
+              <div class="no-of-ticket">
+                <p>Ticket Number</p>
+                <span class="text-sky">{{ val.ticket }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
